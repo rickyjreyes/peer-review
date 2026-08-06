@@ -33,14 +33,14 @@ jobs:
       - name: Compile manuscript
         working-directory: paper
         run: |
-          pdflatex -interaction=nonstopmode -halt-on-error peer_review_ecosystem_simulation.tex
-          pdflatex -interaction=nonstopmode -halt-on-error peer_review_ecosystem_simulation.tex
+          pdflatex -interaction=nonstopmode -halt-on-error peer_review_ecosystem_simulation_full.tex
+          pdflatex -interaction=nonstopmode -halt-on-error peer_review_ecosystem_simulation_full.tex
 
       - name: Commit compiled PDF
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add paper/peer_review_ecosystem_simulation.pdf
+          git add paper/peer_review_ecosystem_simulation_full.pdf
           if git diff --cached --quiet; then
             echo "Compiled PDF is already current."
           else
