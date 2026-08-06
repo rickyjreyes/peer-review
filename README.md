@@ -126,6 +126,12 @@ The `results/` directory contains compact CSV summaries from dynamic hidden-trut
 
 Large world-level outputs are intentionally omitted. They can be regenerated with the fixed seeds and commands documented in the source and manuscript.
 
+## Claim being tested
+
+In this repository, **peer review** means the modern institution of mandatory prepublication gatekeeping, not evaluation by knowledgeable peers in general. Every serious comparison retains expert criticism, error detection, revision, replication, and continuing evaluation. The disputed mechanism is the publication veto.
+
+The claim that peer review **always harms science** is meant in a game-theoretic, system-level sense: relative to an otherwise equivalent evaluation system without veto power, adding the gate changes incentives, access, and attention toward a worse scientific equilibrium. It does not mean that every review report is harmful, and it does not challenge expert evaluation itself. The simulations provide strong evidence for this mechanism across the tested parameter families. They are not yet a mathematical dominance proof over every possible institutional design.
+
 ## Interpretation
 
 These simulations are structural counterfactual models, not proof that any historical publication system is net beneficial or harmful. Their purpose is to identify the conditions under which each institution performs better and to expose the empirical quantities that must be measured.
