@@ -11,8 +11,9 @@ The simulator creates paper populations with hidden false, partially true, and s
 
 ## Main paper
 
-- [`paper/peer_review_ecosystem_simulation.pdf`](paper/peer_review_ecosystem_simulation.pdf)
 - [`paper/peer_review_ecosystem_simulation.tex`](paper/peer_review_ecosystem_simulation.tex)
+
+The LaTeX source is included directly so the manuscript can be compiled and audited alongside the code.
 
 ## Source code
 
@@ -50,7 +51,7 @@ python src/symmetric_scientific_review_simulator.py \
 
 ## Included result summaries
 
-The `results/` directory contains compact CSV summaries from development runs, including dynamic hidden-truth, realistic-versus-idealized, high-consequence and equity-sensitive, peer-review-favorable, symmetric, equal-total-labor, and smoke-test experiments.
+The `results/` directory contains compact CSV summaries from dynamic hidden-truth, realistic-versus-idealized, high-consequence and equity-sensitive, peer-review-favorable, symmetric, and equal-total-labor experiments.
 
 Large world-level outputs are intentionally omitted. They can be regenerated with the fixed seeds and commands documented in the source and manuscript.
 
