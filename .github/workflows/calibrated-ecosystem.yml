@@ -1,0 +1,67 @@
+name: Calibrated ecosystem rerun
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/run_calibrated_ecosystem.py"
+      - "src/scientific_publication_simulator.py"
+      - "results/empirical_calibration/best_fit_parameters.json"
+      - "Makefile"
+      - ".github/workflows/calibrated-ecosystem.yml"
+  pull_request:
+    paths:
+      - "src/run_calibrated_ecosystem.py"
+      - "src/scientific_publication_simulator.py"
+      - "results/empirical_calibration/best_fit_parameters.json"
+      - "Makefile"
+      - ".github/workflows/calibrated-ecosystem.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run calibration-propagated ecosystem simulation
+        run: |
+          python src/run_calibrated_ecosystem.py \
+            --worlds 500 \
+            --papers 250 \
+            --periods 25 \
+            --output-dir calibrated_ecosystem_output
+
+      - name: Display results
+        run: |
+          echo "Win rates"
+          cat calibrated_ecosystem_output/win_rates.csv
+          echo
+          echo "Summary"
+          cat calibrated_ecosystem_output/summary.csv
+          echo
+          echo "Metadata"
+          cat calibrated_ecosystem_output/metadata.json
+
+      - name: Upload calibrated results
+        uses: actions/upload-artifact@v4
+        with:
+          name: calibrated-ecosystem-results
+          path: calibrated_ecosystem_output/
+          if-no-files-found: error
