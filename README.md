@@ -11,9 +11,10 @@ The simulator creates paper populations with hidden false, partially true, and s
 
 ## Main paper
 
-- [`paper/peer_review_ecosystem_simulation.tex`](paper/peer_review_ecosystem_simulation.tex)
+- **[Read the paper (PDF)](paper/peer_review_ecosystem_simulation.pdf)**
+- [LaTeX source](paper/peer_review_ecosystem_simulation.tex)
 
-The LaTeX source and its figure files are included directly so the manuscript can be compiled and audited alongside the code.
+The compiled manuscript, LaTeX source, figures, simulation code, calibration targets, and results are included so the study can be read, reproduced, and audited directly from the repository.
 
 ## Source code
 
