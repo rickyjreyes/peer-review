@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650" role="img" aria-labelledby="title desc">
+<title id="title">Empirical reviewer calibration</title>
+<desc id="desc">Grouped bars compare empirical reviewer behavior targets with the best-fitting simulated observables.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#222}.axis{stroke:#333;stroke-width:2}.grid{stroke:#ddd;stroke-width:1}.t{fill:#4b5563}.b{fill:#9ca3af}</style>
+<text x="550" y="38" text-anchor="middle" font-size="28" font-weight="bold">Empirical reviewer calibration</text>
+<line class="grid" x1="90" y1="500.0" x2="1070" y2="500.0"/><text x="78" y="506.0" text-anchor="end" font-size="17">0.0</text>
+<line class="grid" x1="90" y1="414.0" x2="1070" y2="414.0"/><text x="78" y="420.0" text-anchor="end" font-size="17">0.2</text>
+<line class="grid" x1="90" y1="328.0" x2="1070" y2="328.0"/><text x="78" y="334.0" text-anchor="end" font-size="17">0.4</text>
+<line class="grid" x1="90" y1="242.0" x2="1070" y2="242.0"/><text x="78" y="248.0" text-anchor="end" font-size="17">0.6</text>
+<line class="grid" x1="90" y1="156.0" x2="1070" y2="156.0"/><text x="78" y="162.0" text-anchor="end" font-size="17">0.8</text>
+<line class="grid" x1="90" y1="70.0" x2="1070" y2="70.0"/><text x="78" y="76.0" text-anchor="end" font-size="17">1.0</text>
+<line class="axis" x1="90" y1="70" x2="90" y2="500"/><line class="axis" x1="90" y1="500" x2="1070" y2="500"/>
+<rect class="t" x="132.7" y="376.7" width="34" height="123.3"/><text x="149.7" y="368.7" text-anchor="middle" font-size="14">0.287</text>
+<rect class="b" x="176.7" y="372.9" width="34" height="127.1"/><text x="193.7" y="364.9" text-anchor="middle" font-size="14">0.295</text><text x="171.7" y="532" text-anchor="end" transform="rotate(-32 171.7 532)" font-size="16">Error detection</text>
+<rect class="t" x="296.0" y="353.8" width="34" height="146.2"/><text x="313.0" y="345.8" text-anchor="middle" font-size="14">0.340</text>
+<rect class="b" x="340.0" y="367.6" width="34" height="132.4"/><text x="357.0" y="359.6" text-anchor="middle" font-size="14">0.308</text><text x="335.0" y="532" text-anchor="end" transform="rotate(-32 335.0 532)" font-size="16">Reliability</text>
+<rect class="t" x="459.3" y="426.9" width="34" height="73.1"/><text x="476.3" y="418.9" text-anchor="middle" font-size="14">0.170</text>
+<rect class="b" x="503.3" y="418.1" width="34" height="81.9"/><text x="520.3" y="410.1" text-anchor="middle" font-size="14">0.190</text><text x="498.3" y="532" text-anchor="end" transform="rotate(-32 498.3 532)" font-size="16">Kappa</text>
+<rect class="t" x="622.7" y="81.6" width="34" height="418.4"/><text x="639.7" y="73.6" text-anchor="middle" font-size="14">0.973</text>
+<rect class="b" x="666.7" y="81.6" width="34" height="418.4"/><text x="683.7" y="73.6" text-anchor="middle" font-size="14">0.973</text><text x="661.7" y="532" text-anchor="end" transform="rotate(-32 661.7 532)" font-size="16">Positive rec.</text>
+<rect class="t" x="786.0" y="156.0" width="34" height="344.0"/><text x="803.0" y="148.0" text-anchor="middle" font-size="14">0.800</text>
+<rect class="b" x="830.0" y="150.2" width="34" height="349.8"/><text x="847.0" y="142.2" text-anchor="middle" font-size="14">0.813</text><text x="825.0" y="532" text-anchor="end" transform="rotate(-32 825.0 532)" font-size="16">Null rec.</text>
+<rect class="t" x="949.3" y="331.9" width="34" height="168.1"/><text x="966.3" y="323.9" text-anchor="middle" font-size="14">0.391</text>
+<rect class="b" x="993.3" y="339.5" width="34" height="160.5"/><text x="1010.3" y="331.5" text-anchor="middle" font-size="14">0.373</text><text x="988.3" y="532" text-anchor="end" transform="rotate(-32 988.3 532)" font-size="16">Rejector detection</text>
+<rect class="t" x="385" y="600" width="22" height="16"/><text x="417" y="614" font-size="17">Empirical target</text>
+<rect class="b" x="600" y="600" width="22" height="16"/><text x="632" y="614" font-size="17">Best-fitting simulation</text>
+</svg>
