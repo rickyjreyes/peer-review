@@ -21,7 +21,9 @@ The LaTeX source and its figure files are included directly so the manuscript ca
 - `src/symmetric_scientific_review_simulator.py`: symmetric model in which every system can detect defects, repair methods and reporting, miss errors, introduce harmful revisions, and consume expert labor.
 - `src/reproduce_robustness_experiments.py`: exact runner for the symmetric-correction and equal-total-labor headline tests.
 - `src/calibrate_empirical_model.py`: simulation-based calibration of latent reviewer parameters to controlled-study observables.
-- `src/plot_results.R`: base-R script that regenerates the publication figures from the committed CSV summaries.
+- `src/run_calibrated_ecosystem.py`: propagates the committed reviewer calibration through the full publication ecosystem.
+- `src/plot_results.R`: regenerates the structural and robustness figures.
+- `src/plot_calibrated_results.R`: regenerates the calibration-propagated ecosystem figures.
 - `src/legacy_baseline_simulation.py`: earlier known-truth baseline retained for provenance.
 - `data/empirical_targets.json`: machine-readable empirical targets, tolerances, epistemic status, and source metadata.
 - `ASSUMPTIONS.md`: separates empirically estimated, bounded, partially constrained, illustrative, and normative quantities.
@@ -63,7 +65,6 @@ python src/reproduce_robustness_experiments.py \
 
 This command regenerates the committed symmetric and equal-total-labor summary tables with the reported fixed seed. Use `--world-level` to retain the larger per-world tables.
 
-
 ## Calibrate reviewer behavior to controlled studies
 
 The calibration does not set a latent coefficient equal to an observed percentage. It searches internal parameter space for combinations that reproduce planted-error detection, reviewer reliability, Cohen's kappa, positive-outcome recommendation bias, and rejection-conditioned error detection.
@@ -87,18 +88,33 @@ A quick structural check is available with:
 make calibrate-quick
 ```
 
+## Run the calibration-propagated ecosystem
+
+```bash
+make calibrated-ecosystem
+```
+
+The committed result uses 500 worlds, 250 papers per world, and 25 periods, totaling 125,000 unique simulated papers. Reviewer error detection, disagreement, recommendation behavior, and positive-outcome bias are propagated from the empirical calibration. Post-rejection attention, resubmission, defect prevalence, evidence dynamics, and utility weights remain structural sweeps.
+
 ## Recreate the figures in R
 
 The plotting workflow uses base R only and requires no additional R packages:
 
 ```bash
-Rscript src/plot_results.R
+make figures
 ```
 
-The script writes PNG and SVG files to `paper/figures/`; PNG files are used by the LaTeX manuscript and SVG files render directly on GitHub.
+The scripts write PNG and SVG files to `paper/figures/`; PNG files are used by the LaTeX manuscript and SVG files render directly on GitHub.
 
 ## Key result figures
 
+### Calibration-propagated ecosystem win shares
+
+![Win share after empirical reviewer calibration](paper/figures/calibrated_ecosystem_win_shares.svg)
+
+### Calibration-propagated truth recovery
+
+![Truth recovery after empirical reviewer calibration](paper/figures/calibrated_ecosystem_true_value.svg)
 
 ### Empirical reviewer calibration
 
@@ -112,7 +128,7 @@ The script writes PNG and SVG files to `paper/figures/`; PNG files are used by t
 
 ![Equal-total-labor true value recovery](paper/figures/equal_budget_true_value.svg)
 
-### Realistic versus peer-review-favorable assumptions
+### Structural assumption profiles before reviewer calibration
 
 ![True-value recovery across assumption profiles](paper/figures/realistic_vs_ideal_true_value.svg)
 
@@ -122,7 +138,7 @@ The script writes PNG and SVG files to `paper/figures/`; PNG files are used by t
 
 ## Included result summaries
 
-The `results/` directory contains compact CSV summaries from dynamic hidden-truth, realistic-versus-idealized, high-consequence and equity-sensitive, peer-review-favorable, symmetric, equal-total-labor, and empirical reviewer-calibration runs.
+The `results/` directory contains compact CSV summaries from dynamic hidden-truth, realistic-versus-idealized, high-consequence and equity-sensitive, peer-review-favorable, symmetric, equal-total-labor, empirical reviewer-calibration, and calibration-propagated ecosystem runs.
 
 Large world-level outputs are intentionally omitted. They can be regenerated with the fixed seeds and commands documented in the source and manuscript.
 
@@ -136,7 +152,9 @@ The claim that peer review **always harms science** is meant in a game-theoretic
 
 These simulations are structural counterfactual models, not proof that any historical publication system is net beneficial or harmful. Their purpose is to identify the conditions under which each institution performs better and to expose the empirical quantities that must be measured.
 
-The central conditional result is that when uncertain prepublication decisions reduce later attention, mandatory gating can recover less latent truth than continuous open evaluation, even when expert reviewers can materially improve manuscripts. Peer review becomes competitive when reviewers are unusually accurate and unbiased, rejected work remains highly discoverable, resubmission is easy, and delay and labor costs are small. The empirical calibration narrows uncertainty about reviewer detection, disagreement, and outcome bias, but it does not make the ecosystem-level win shares empirical probabilities.
+The central conditional result is that when uncertain prepublication decisions reduce later attention, mandatory gating can recover less latent truth than continuous open evaluation, even when expert reviewers can materially improve manuscripts. Peer review becomes competitive when reviewers are unusually accurate and unbiased, rejected work remains highly discoverable, resubmission is easy, and delay and labor costs are small.
+
+In the calibration-propagated run, open triage won 49.6% of simulated worlds and recovered 83.94% of true scientific value. Peer review won 4.8% and recovered 75.98%. This strengthens the result by grounding the reviewer-behavior mechanism in controlled-study observables, but it does not make ecosystem-level win shares observed historical probabilities.
 
 ## Reproducibility
 
