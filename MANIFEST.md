@@ -18,7 +18,6 @@
 - `results/peer_favorable/`
 - `results/symmetric/`
 - `results/equal_budget/`
-- `results/smoke_test/`
 
 ## Environment
 
