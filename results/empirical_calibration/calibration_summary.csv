@@ -1,0 +1,8 @@
+observable,target,tolerance,best_fit,retained_weighted_mean,retained_p05,retained_p95,status,fit_role
+major_error_detection_rate,0.2866666667,0.025,0.2955,0.2981599697739955,0.28814833333333334,0.30639777777777777,empirically_estimated,primary
+interreviewer_reliability,0.34,0.05,0.30790101242744616,0.3119489679693178,0.29851032566439345,0.32743381252371406,empirically_estimated,primary
+interreviewer_kappa,0.17,0.04,0.19042132417278865,0.19888596836118433,0.18847901877383963,0.2107166520839858,empirically_estimated,primary
+positive_result_recommendation_rate,0.973,0.02,0.973,0.9691557406992892,0.9623900000000001,0.9762099999999999,empirically_estimated,primary
+null_result_recommendation_rate,0.8,0.04,0.8134,0.8054766682491402,0.79077,0.81961,empirically_estimated,primary
+positive_result_recommendation_gap,0.173,0.035,0.15959999999999996,0.16367907245014907,0.15038999999999997,0.17941,empirically_estimated,derived_validation
+major_error_detection_among_rejectors,0.391,0.045,0.3731762065095398,0.36727492407000295,0.35651300498267485,0.3784284264106008,empirically_estimated,secondary
