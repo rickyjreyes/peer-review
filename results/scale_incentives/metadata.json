@@ -1,0 +1,13 @@
+{
+  "worlds": 500,
+  "seeds": [20260806, 20260807, 20260808, 20260809, 20260810],
+  "generations": 10,
+  "opportunity_pool_per_generation": 300,
+  "projects_pursued_per_generation": 120,
+  "latent_opportunities_per_system_scenario": 1500000,
+  "pursued_projects_per_system_scenario": 600000,
+  "common_random_numbers": "Same latent opportunity pools, project-choice shocks, and evaluation RNG seeds across systems and scenarios within each world/generation.",
+  "expert_budget": "Equal total expert-action budget per generation; formal peer review consumes part of the peer-review budget.",
+  "reviewer_calibration": "Committed best_fit_parameters.json values.",
+  "interpretive_boundary": "Finance, government, fame, entropy, and attribution-capture strengths are structural sweeps, not empirical estimates. Attribution capture models unattributed or prestige-shifted rediscovery, not an empirical claim of deliberate theft."
+}
