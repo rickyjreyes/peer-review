@@ -1,0 +1,161 @@
+\section{Model}
+
+\subsection{Latent paper state}
+
+For each paper $i$, the simulator draws a latent truth state
+
+\begin{equation}
+T_i \in \{0, 0.5, 1\},
+\end{equation}
+
+representing substantially false, partially true or domain-limited, and substantially true claims. Each paper also receives:
+
+\begin{equation}
+(N_i, P_i, C_i, U_i, V_i, F_i),
+\end{equation}
+
+where $N_i$ is novelty, $P_i$ is author or institutional prestige, $C_i$ is clarity, $U_i$ is topic popularity, $V_i$ is intrinsic scientific value, and $F_i$ is a fraud indicator. Scientific value is heavy-tailed:
+
+\begin{equation}
+V_i = L_i\left(1+\lambda N_i^2\right),
+\qquad L_i \sim \operatorname{Lognormal}(0,1),
+\end{equation}
+
+so rare, highly novel papers can contribute disproportionately to long-run knowledge.
+
+\subsection{Reviewer decision model}
+
+Reviewer $r$ assigns manuscript $i$ a score
+
+\begin{equation}
+R_{ir} =
+\alpha(2T_i-1)
++\beta_C(C_i-0.5)
++\beta_P(P_i-0.5)
+-\beta_N N_i
++\beta_K(P_i-N_i)
++\varepsilon_{ir},
+\end{equation}
+
+where $\alpha$ is reviewer skill, $\beta_P$ is prestige bias, $\beta_N$ is novelty penalty, $\beta_K$ is conformity incentive, and
+
+\begin{equation}
+\varepsilon_{ir}\sim\mathcal{N}(0,\sigma_R^2)
+\end{equation}
+
+represents reviewer noise and disagreement. A manuscript is accepted when the mean reviewer score exceeds threshold $\tau_R$.
+
+This formulation does not assume reviewers know truth. Truth affects decisions only through an imperfect and noisy signal.
+
+\subsection{Attention allocation}
+
+Each institution receives the same total downstream evaluation budget per period. Attention probabilities are produced by a softmax allocation:
+
+\begin{equation}
+\pi_i = \frac{\exp(\kappa A_i)}{\sum_{j\in\mathcal{E}}\exp(\kappa A_j)},
+\end{equation}
+
+where $A_i$ is institution-specific appeal, $\kappa$ controls concentration, and $\mathcal{E}$ is the set of active papers. Evaluation counts are sampled from a multinomial distribution.
+
+For traditional peer review, accepted papers receive the journal-attention advantage. Rejected work remains eligible but its attention weight is multiplied by
+
+\begin{equation}
+\rho\in[0,1],
+\end{equation}
+
+where $\rho=1$ means rejection causes no attention loss and $\rho=0$ means effective disappearance.
+
+For open triage, attention is mixed with randomized exploration:
+
+\begin{equation}
+\pi_i^{\mathrm{triage}}
+=(1-\eta)\pi_i^{\mathrm{merit}}
++\eta\frac{1}{|\mathcal{E}|},
+\end{equation}
+
+where $\eta$ is the exploration share.
+
+\subsection{Evidence accumulation}
+
+At time $t$, a paper receiving $m_{it}$ evaluations generates noisy evidence
+
+\begin{equation}
+E_{it}=(2T_i-1)+\xi_{it},
+\qquad
+\xi_{it}\sim\mathcal{N}\left(0,\frac{\sigma_E^2}{m_{it}}\right).
+\end{equation}
+
+Additional evaluations increase the probability of replication and fraud detection. Community confidence $q_{it}$ is updated in log-odds space:
+
+\begin{equation}
+\operatorname{logit}(q_{i,t+1})
+=
+\operatorname{logit}(q_{it})+\gamma E_{it},
+\end{equation}
+
+where $\gamma$ is the learning rate. Papers receiving no attention drift only slightly toward uncertainty, rather than being treated as false.
+
+A paper is recognized when
+
+\begin{equation}
+q_{it}\geq \tau_Q,
+\end{equation}
+
+and may lose standing after repeated negative evidence when confidence falls below a withdrawal threshold.
+
+\subsection{Primary metrics}
+
+The weighted calibration error is
+
+\begin{equation}
+\mathcal{C}
+=
+\frac{\sum_i V_i(q_i-T_i)^2}{\sum_i V_i}.
+\end{equation}
+
+True scientific value recovered is
+
+\begin{equation}
+\mathcal{R}
+=
+\frac{\sum_i T_iV_i\,\mathbb{I}(i\ \mathrm{recognized})}
+{\sum_i T_iV_i}.
+\end{equation}
+
+False recognition is
+
+\begin{equation}
+\mathcal{F}
+=
+\frac{\sum_i \mathbb{I}(T_i=0)\mathbb{I}(i\ \mathrm{recognized})}
+{\sum_i \mathbb{I}(T_i=0)}.
+\end{equation}
+
+The base institutional score is
+
+\begin{equation}
+S
+=w_R\mathcal{R}
+-w_F\mathcal{F}
+-w_C\mathcal{C}
+-w_D D
+-w_L L,
+\end{equation}
+
+where $D$ and $L$ represent publication delay and reviewer labor.
+
+\subsection{Symmetric manuscript-correction extension}
+
+The canonical model allows revision following rejection, but a critic could reasonably ask whether it understates the local corrective value of expert review. A separate symmetric extension therefore assigns every manuscript a quality vector
+
+\begin{equation}
+\mathbf{q}_i=(m_i,s_i,r_i,x_i),
+\end{equation}
+
+where $m_i$, $s_i$, $r_i$, and $x_i$ denote methodological quality, statistical quality, reporting quality, and reproducibility. Every institutional system receives the same expert-action mechanism. An expert action may detect a defect, successfully repair it, miss it, or introduce a harmful revision. The probability of detecting a defect increases with the size of the defect and the number of expert actions. Open evaluation is therefore not modeled as passive exposure, and prepublication review is not modeled as mere filtering.
+
+The symmetric experiment uses the same latent paper population for all four systems. Differences arise from the timing of review, attention allocation, gatekeeping, resubmission, and institutional signaling rather than from granting correction exclusively to one system.
+
+\subsection{Exact lifetime expert-labor constraint}
+
+A second robustness test imposes an identical lifetime expert-action budget on every system. For peer review and the hybrid system, initial formal review consumes part of that budget. Peer-review resubmission also consumes the remaining budget. Open systems spend the corresponding actions on continuing evaluation and correction. This eliminates the possibility that an open system wins merely because it receives more total expert labor, or that peer review wins because its initial review labor is uncounted.
