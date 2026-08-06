@@ -19,6 +19,7 @@ The LaTeX source is included directly so the manuscript can be compiled and audi
 
 - `src/scientific_publication_simulator.py`: canonical dynamic publication-ecosystem model.
 - `src/symmetric_scientific_review_simulator.py`: symmetric model in which every system can detect defects, repair methods and reporting, miss errors, introduce harmful revisions, and consume expert labor.
+- `src/reproduce_robustness_experiments.py`: exact runner for the symmetric-correction and equal-total-labor headline tests.
 - `src/legacy_baseline_simulation.py`: earlier known-truth baseline retained for provenance.
 
 ## Installation
@@ -48,6 +49,15 @@ python src/symmetric_scientific_review_simulator.py \
   --periods 30 \
   --output-dir symmetric_output
 ```
+
+## Reproduce the final robustness results
+
+```bash
+python src/reproduce_robustness_experiments.py \
+  --output-root reproduced_results
+```
+
+This command regenerates the committed symmetric and equal-total-labor summary tables with the reported fixed seed. Use `--world-level` to retain the larger per-world tables.
 
 ## Included result summaries
 
