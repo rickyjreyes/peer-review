@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+<title id="title">Symmetric correction model win share</title>
+<desc id="desc">Open triage won 55.0 percent, hybrid 26.8 percent, open review 17.8 percent, and peer review 0.4 percent of simulated worlds.</desc>
+<rect width="1000" height="620" fill="white"/>
+<text x="500" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-size="30">Symmetric correction model: win share</text>
+<line x1="105" y1="520" x2="950" y2="520" stroke="#333" stroke-width="2"/>
+<line x1="105" y1="90" x2="105" y2="520" stroke="#333" stroke-width="2"/>
+<g font-family="Arial, sans-serif" font-size="18" fill="#333">
+<text x="92" y="526" text-anchor="end">0%</text><text x="92" y="394" text-anchor="end">20%</text><text x="92" y="262" text-anchor="end">40%</text><text x="92" y="130" text-anchor="end">60%</text>
+</g>
+<g stroke="#ddd"><line x1="105" y1="388" x2="950" y2="388"/><line x1="105" y1="256" x2="950" y2="256"/><line x1="105" y1="124" x2="950" y2="124"/></g>
+<g fill="#2b7bb9">
+<rect x="145" y="157" width="150" height="363"/><rect x="350" y="343" width="150" height="177"/><rect x="555" y="402" width="150" height="118"/><rect x="760" y="517" width="150" height="3"/>
+</g>
+<g font-family="Arial, sans-serif" font-size="21" text-anchor="middle" fill="#111">
+<text x="220" y="142">55.0%</text><text x="425" y="328">26.8%</text><text x="630" y="387">17.8%</text><text x="835" y="502">0.4%</text>
+</g>
+<g font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#222">
+<text x="220" y="558">Open triage</text><text x="425" y="558">Hybrid</text><text x="630" y="558">Open review</text><text x="835" y="558">Peer review</text>
+</g>
+<text x="30" y="310" transform="rotate(-90 30 310)" text-anchor="middle" font-family="Arial, sans-serif" font-size="21">Share of simulated worlds won</text>
+</svg>
