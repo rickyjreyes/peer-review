@@ -1,5 +1,6 @@
 name: Calibrated ecosystem rerun
 
+# This workflow is intentionally reproducible from the committed calibration.
 on:
   push:
     branches:
