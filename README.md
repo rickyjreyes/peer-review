@@ -23,6 +23,7 @@ The complete manuscript is contained in one LaTeX file with no section-file depe
 - `src/reproduce_robustness_experiments.py`: exact runner for the symmetric-correction and equal-total-labor headline tests.
 - `src/calibrate_empirical_model.py`: simulation-based calibration of latent reviewer parameters to controlled-study observables.
 - `src/run_calibrated_ecosystem.py`: propagates the committed reviewer calibration through the full publication ecosystem.
+- `src/run_scale_incentive_experiment.py`: repeated-game stress test for finance, government priorities, fame incentives, attention entropy, and attribution capture.
 - `src/plot_results.R`: regenerates the structural and robustness figures.
 - `src/plot_calibrated_results.R`: regenerates the calibration-propagated ecosystem figures.
 - `src/legacy_baseline_simulation.py`: earlier known-truth baseline retained for provenance.
@@ -97,6 +98,19 @@ make calibrated-ecosystem
 
 The committed result uses 500 worlds, 250 papers per world, and 25 periods, totaling 125,000 unique simulated papers. Reviewer error detection, disagreement, recommendation behavior, and positive-outcome bias are propagated from the empirical calibration. Post-rejection attention, resubmission, defect prevalence, evidence dynamics, and utility weights remain structural sweeps.
 
+## Run the scale and incentive stress test
+
+```bash
+python src/run_scale_incentive_experiment.py \
+  --worlds 100 \
+  --generations 10 \
+  --pool 300 \
+  --pursued 120 \
+  --output-dir results/scale_incentives
+```
+
+This repeated-game extension adds switchable financial, government-priority, fame/prestige, attention-entropy, and attribution-capture mechanisms while preserving common latent opportunities and equal total expert-action budgets. The pooled 500-world test increased the open-triage truth-recovery advantage from 1.83 percentage points in the baseline to 3.07 points with all mechanisms active. Entropy was the strongest individual amplifier. These added mechanism strengths are structural sweeps, not empirical estimates. See [`results/scale_incentives/README.md`](results/scale_incentives/README.md) for the full ablation and scale results.
+
 ## Recreate the figures in R
 
 The plotting workflow uses base R only and requires no additional R packages:
@@ -139,7 +153,7 @@ The scripts write PNG and SVG files to `paper/figures/` for repository visualiza
 
 ## Included result summaries
 
-The `results/` directory contains compact CSV summaries from dynamic hidden-truth, realistic-versus-idealized, high-consequence and equity-sensitive, peer-review-favorable, symmetric, equal-total-labor, empirical reviewer-calibration, and calibration-propagated ecosystem runs.
+The `results/` directory contains compact CSV summaries from dynamic hidden-truth, realistic-versus-idealized, high-consequence and equity-sensitive, peer-review-favorable, symmetric, equal-total-labor, empirical reviewer-calibration, calibration-propagated ecosystem, and scale/incentive stress-test runs.
 
 Large world-level outputs are intentionally omitted. They can be regenerated with the fixed seeds and commands documented in the source and manuscript.
 
