@@ -11,10 +11,10 @@ The simulator creates paper populations with hidden false, partially true, and s
 
 ## Main paper
 
-- **[Read the paper (PDF)](paper/peer_review_ecosystem_simulation.pdf)**
-- [LaTeX source](paper/peer_review_ecosystem_simulation.tex)
+- **[Read the paper (PDF)](paper/peer_review_ecosystem_simulation_full.pdf)**
+- [Full standalone LaTeX source](paper/peer_review_ecosystem_simulation_full.tex)
 
-The compiled manuscript, LaTeX source, figures, simulation code, calibration targets, and results are included so the study can be read, reproduced, and audited directly from the repository.
+The complete manuscript is contained in one LaTeX file with no section-file dependencies. The compiled manuscript, figures, simulation code, calibration targets, and results are included so the study can be read, reproduced, and audited directly from the repository.
 
 ## Source code
 
@@ -105,7 +105,7 @@ The plotting workflow uses base R only and requires no additional R packages:
 make figures
 ```
 
-The scripts write PNG and SVG files to `paper/figures/`; PNG files are used by the LaTeX manuscript and SVG files render directly on GitHub.
+The scripts write PNG and SVG files to `paper/figures/` for repository visualization and independent figure regeneration. The standalone LaTeX manuscript contains its publication figures directly.
 
 ## Key result figures
 
