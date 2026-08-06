@@ -8,6 +8,7 @@
 
 - `src/scientific_publication_simulator.py`
 - `src/symmetric_scientific_review_simulator.py`
+- `src/reproduce_robustness_experiments.py`
 - `src/legacy_baseline_simulation.py`
 
 ## Results
