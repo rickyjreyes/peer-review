@@ -26,7 +26,7 @@ An open system without triage can recreate the same concentration problem. This 
 The simulations are structural counterfactuals, not empirical estimates of historical peer review. Several limitations are fundamental.
 
 \begin{enumerate}
-    \item \textbf{Parameter calibration.} Most parameter ranges are plausible but not fitted to a unified empirical dataset. Reviewer skill, attention loss after rejection, social-value distributions, and resubmission probabilities require direct measurement.
+    \item \textbf{Parameter calibration.} The reviewer-behavior submodel is now constrained to selected controlled-study targets for error detection, disagreement, and outcome bias. The complete ecosystem is not empirically identified: attention loss after rejection, abandonment, resubmission, discoverability, social-value distributions, and comparative open-triage performance still require direct measurement.
     \item \textbf{Truth representation.} Truth is represented by three latent states. Real claims can be valid only within narrow domains, depend on auxiliary assumptions, or change meaning as methods improve.
     \item \textbf{Evidence model.} Evidence is summarized by noisy scalar signals. Real evidence varies in design quality, dependence, incentives, replication fidelity, and susceptibility to coordinated error.
     \item \textbf{Institutional adaptation.} Authors, reviewers, journals, and platforms would adapt strategically to any system. The present model includes some incentives but not full evolutionary adaptation.
@@ -34,7 +34,7 @@ The simulations are structural counterfactuals, not empirical estimates of histo
     \item \textbf{Open-system governance.} Transparent triage is represented abstractly. A real platform would require identity safeguards, conflict-of-interest rules, data standards, fraud controls, auditability, and resistance to manipulation.
 \end{enumerate}
 
-The simulations therefore do not prove that peer review has caused net historical harm or that abolition is universally optimal. They show that peer review is not automatically beneficial and that its relative performance is highly sensitive to reviewer reliability, bias, and the attention consequences of rejection.
+The simulations therefore do not prove that peer review has caused net historical harm or that abolition is universally optimal. They show that peer review is not automatically beneficial and that its relative performance is highly sensitive to reviewer reliability, bias, and the attention consequences of rejection. The empirical calibration layer strengthens the reviewer-behavior component, but it does not convert unmeasured ecosystem parameters into observations or retroactively make the institutional win shares empirical probabilities.
 
 \section{Empirical Tests Suggested by the Model}
 
@@ -59,6 +59,8 @@ A decisive real-world test would randomize comparable manuscripts among traditio
 Formal peer review can improve manuscripts and prevent some defective claims from receiving early legitimacy. Those local benefits do not establish that mandatory prepublication gatekeeping maximizes scientific truth recovery.
 
 In the canonical simulation, peer review became competitive only when reviewers were highly accurate, reviewer noise was low, prestige and novelty biases were absent, rejected work retained nearly equal attention, resubmission was easy, and delay and labor were treated as costless. The robustness extensions strengthened the comparison. When every system received the same defect-detection and manuscript-repair mechanisms, peer review won 0.4\% of worlds. When total lifetime expert labor was made exactly equal and the remaining assumptions deliberately favored peer review, it won 14.0\% of worlds, compared with 60.1\% for open triage. Under more realistic structural assumptions, immediate publication with continuing transparent triage recovered more true scientific value and produced lower calibration error. When the asymmetric social cost of missed cancer, public-health, safety, climate, and infrastructure research was included, the penalty for false negatives became substantial.
+
+The new reviewer calibration reproduces controlled findings on planted-error detection, reviewer disagreement, and positive-outcome bias without equating those observed percentages with latent score coefficients. This narrows one major source of arbitrariness. The institutional conclusion nevertheless remains conditional because the downstream consequences of rejection are not yet identified.
 
 The central conclusion is conditional but important:
 
@@ -85,4 +87,10 @@ python src/reproduce_robustness_experiments.py \
   --output-root reproduced_results
 \end{verbatim}
 
-The command regenerates the 125,000-paper symmetric correction tables and the 176,000-paper equal-total-labor tables. The simulator requires Python 3, NumPy, and pandas. Fixed random seeds are used for exact reproduction of the committed summaries. Large-scale results should also be rerun across multiple seeds and independently audited before inferential claims are made.
+The empirical reviewer calibration can be regenerated with:
+
+\begin{verbatim}
+python src/calibrate_empirical_model.py
+\end{verbatim}
+
+The calibration target metadata are stored in \texttt{data/empirical\_targets.json}, and parameter classifications are documented in \texttt{ASSUMPTIONS.md}. The robustness command regenerates the 125,000-paper symmetric correction tables and the 176,000-paper equal-total-labor tables. The simulator requires Python 3, NumPy, and pandas. Fixed random seeds are used for exact reproduction of the committed summaries. Large-scale results should also be rerun across multiple seeds and independently audited before inferential claims are made.
