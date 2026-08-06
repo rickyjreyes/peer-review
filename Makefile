@@ -17,6 +17,7 @@ calibrated-ecosystem:
 
 figures:
 	$(RSCRIPT) src/plot_results.R
+	$(RSCRIPT) src/plot_calibrated_results.R
 
 robustness:
 	$(PYTHON) src/reproduce_robustness_experiments.py --output-root reproduced_results
