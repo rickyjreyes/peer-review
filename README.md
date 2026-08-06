@@ -13,13 +13,14 @@ The simulator creates paper populations with hidden false, partially true, and s
 
 - [`paper/peer_review_ecosystem_simulation.tex`](paper/peer_review_ecosystem_simulation.tex)
 
-The LaTeX source is included directly so the manuscript can be compiled and audited alongside the code.
+The LaTeX source and its figure files are included directly so the manuscript can be compiled and audited alongside the code.
 
 ## Source code
 
 - `src/scientific_publication_simulator.py`: canonical dynamic publication-ecosystem model.
 - `src/symmetric_scientific_review_simulator.py`: symmetric model in which every system can detect defects, repair methods and reporting, miss errors, introduce harmful revisions, and consume expert labor.
 - `src/reproduce_robustness_experiments.py`: exact runner for the symmetric-correction and equal-total-labor headline tests.
+- `src/plot_results.R`: base-R script that regenerates the publication figures from the committed CSV summaries.
 - `src/legacy_baseline_simulation.py`: earlier known-truth baseline retained for provenance.
 
 ## Installation
@@ -59,6 +60,34 @@ python src/reproduce_robustness_experiments.py \
 
 This command regenerates the committed symmetric and equal-total-labor summary tables with the reported fixed seed. Use `--world-level` to retain the larger per-world tables.
 
+## Recreate the figures in R
+
+The plotting workflow uses base R only and requires no additional R packages:
+
+```bash
+Rscript src/plot_results.R
+```
+
+The generated files are written to `paper/figures/` and are used directly by the LaTeX manuscript.
+
+## Key result figures
+
+### Symmetric correction model
+
+![Symmetric correction model win shares](paper/figures/symmetric_win_shares.png)
+
+### Equal-total-labor stress test
+
+![Equal-total-labor true value recovery](paper/figures/equal_budget_true_value.png)
+
+### Realistic versus peer-review-favorable assumptions
+
+![True-value recovery across assumption profiles](paper/figures/realistic_vs_ideal_true_value.png)
+
+### High-consequence tradeoff
+
+![High-consequence truth-harm tradeoff](paper/figures/high_consequence_tradeoff.png)
+
 ## Included result summaries
 
 The `results/` directory contains compact CSV summaries from dynamic hidden-truth, realistic-versus-idealized, high-consequence and equity-sensitive, peer-review-favorable, symmetric, and equal-total-labor experiments.
@@ -76,6 +105,7 @@ The central conditional result is that when uncertain prepublication decisions r
 - Python 3
 - NumPy
 - pandas
+- base R for figures
 - fixed random seeds in the scripts
 
 Contributions, audits, alternative parameterizations, and adversarial tests are welcome.
