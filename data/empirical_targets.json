@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "description": "Controlled-study and meta-analytic targets for calibrating the reviewer-behavior submodel. These are observables, not direct values for latent simulator coefficients.",
+  "targets": {
+    "major_error_detection_rate": {
+      "value": 0.2866666667,
+      "tolerance": 0.025,
+      "status": "empirically_estimated",
+      "fit_role": "primary",
+      "numerator": 2.58,
+      "denominator": 9,
+      "source": {
+        "citation": "Schroter S, Black N, Evans S, Godlee F, Osorio L, Smith R. What errors do peer reviewers detect, and does training improve their ability to detect them? JRSM. 2008.",
+        "pmid": "18840867",
+        "doi": "10.1258/jrsm.2008.080062",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18840867/"
+      }
+    },
+    "interreviewer_reliability": {
+      "value": 0.34,
+      "ci_low": 0.29,
+      "ci_high": 0.39,
+      "tolerance": 0.05,
+      "status": "empirically_estimated",
+      "fit_role": "primary",
+      "source": {
+        "citation": "Bornmann L, Mutz R, Daniel H-D. A Reliability-Generalization Study of Journal Peer Reviews. PLOS ONE. 2010.",
+        "doi": "10.1371/journal.pone.0014331",
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014331"
+      }
+    },
+    "interreviewer_kappa": {
+      "value": 0.17,
+      "ci_low": 0.13,
+      "ci_high": 0.21,
+      "tolerance": 0.04,
+      "status": "empirically_estimated",
+      "fit_role": "primary",
+      "source": {
+        "citation": "Bornmann L, Mutz R, Daniel H-D. A Reliability-Generalization Study of Journal Peer Reviews. PLOS ONE. 2010.",
+        "doi": "10.1371/journal.pone.0014331",
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0014331"
+      }
+    },
+    "positive_result_recommendation_rate": {
+      "value": 0.973,
+      "tolerance": 0.02,
+      "status": "empirically_estimated",
+      "fit_role": "primary",
+      "source": {
+        "citation": "Emerson GB et al. Testing for the presence of positive-outcome bias in peer review. Arch Intern Med. 2010.",
+        "pmid": "21098355",
+        "doi": "10.1001/archinternmed.2010.406",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21098355/"
+      }
+    },
+    "null_result_recommendation_rate": {
+      "value": 0.8,
+      "tolerance": 0.04,
+      "status": "empirically_estimated",
+      "fit_role": "primary",
+      "source": {
+        "citation": "Emerson GB et al. Testing for the presence of positive-outcome bias in peer review. Arch Intern Med. 2010.",
+        "pmid": "21098355",
+        "doi": "10.1001/archinternmed.2010.406",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21098355/"
+      }
+    },
+    "positive_result_recommendation_gap": {
+      "value": 0.173,
+      "tolerance": 0.035,
+      "status": "empirically_estimated",
+      "fit_role": "derived_validation",
+      "source": {
+        "citation": "Emerson GB et al. Testing for the presence of positive-outcome bias in peer review. Arch Intern Med. 2010.",
+        "pmid": "21098355",
+        "doi": "10.1001/archinternmed.2010.406",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21098355/"
+      }
+    },
+    "major_error_detection_among_rejectors": {
+      "value": 0.391,
+      "ci_low": 0.363,
+      "ci_high": 0.419,
+      "tolerance": 0.045,
+      "status": "empirically_estimated",
+      "fit_role": "secondary",
+      "source": {
+        "citation": "Baxt WG et al. Who reviews the reviewers? Ann Emerg Med. 1998.",
+        "pmid": "9737492",
+        "doi": "10.1016/S0196-0644(98)70006-X",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9737492/"
+      }
+    },
+    "unsupported_conclusion_miss_rate": {
+      "value": 0.68,
+      "tolerance": 0.06,
+      "status": "empirically_estimated",
+      "fit_role": "validation_only",
+      "source": {
+        "citation": "Baxt WG et al. Who reviews the reviewers? Ann Emerg Med. 1998.",
+        "pmid": "9737492",
+        "doi": "10.1016/S0196-0644(98)70006-X",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9737492/"
+      }
+    },
+    "blinding_detection_effect": {
+      "value": 0.0,
+      "tolerance": 0.04,
+      "status": "empirically_bounded",
+      "fit_role": "fixed_zero_baseline",
+      "note": "The cited randomized trial found no statistically significant difference in error detection from blinding or signing. Zero is used as a baseline effect, not proof of exact absence.",
+      "source": {
+        "citation": "Godlee F, Gale CR, Martyn CN. Effect on the quality of peer review of blinding reviewers and asking them to sign their reports. JAMA. 1998.",
+        "pmid": "9676667",
+        "doi": "10.1001/jama.280.3.237",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9676667/"
+      }
+    },
+    "training_effect": {
+      "value": null,
+      "status": "empirically_bounded",
+      "fit_role": "qualitative_only",
+      "note": "The controlled BMJ study reported only small effects. A numerical coefficient is not imposed without extracting the full trial estimates.",
+      "source": {
+        "citation": "Schroter S et al. JRSM. 2008.",
+        "pmid": "18840867",
+        "doi": "10.1258/jrsm.2008.080062",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18840867/"
+      }
+    }
+  },
+  "ecosystem_parameters": {
+    "post_rejection_attention_fraction": "weakly_informed",
+    "abandonment_probability": "weakly_informed",
+    "resubmission_probability": "partially_constrained",
+    "latent_truth_distribution": "illustrative",
+    "missed_discovery_social_value": "normative",
+    "open_triage_effectiveness": "illustrative",
+    "random_exploration_share": "normative"
+  }
+}
