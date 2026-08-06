@@ -1,0 +1,13 @@
+[
+  {
+    "detection_intercept":-0.9696890045,
+    "reviewer_ability_sd":0.9640201166,
+    "error_difficulty_sd":0.4858557933,
+    "merit_signal":1.6465977861,
+    "rating_noise_sd":1.8786920115,
+    "recommendation_threshold":-1.4033745419,
+    "positive_outcome_bias":2.5808991219,
+    "detected_error_penalty":6.3086866766,
+    "trial_base_merit":2.5399526232
+  }
+]
