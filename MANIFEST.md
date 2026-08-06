@@ -8,12 +8,14 @@
 - `paper/figures/equal_budget_true_value.svg`
 - `paper/figures/realistic_vs_ideal_true_value.svg`
 - `paper/figures/high_consequence_tradeoff.svg`
+- `paper/figures/empirical_calibration_fit.svg`
 
 ## Simulators and scripts
 
 - `src/scientific_publication_simulator.py`
 - `src/symmetric_scientific_review_simulator.py`
 - `src/reproduce_robustness_experiments.py`
+- `src/calibrate_empirical_model.py`
 - `src/plot_results.R`
 - `src/legacy_baseline_simulation.py`
 
@@ -25,6 +27,14 @@
 - `results/peer_favorable/`
 - `results/symmetric/`
 - `results/equal_budget/`
+- `results/empirical_calibration/`
+
+## Calibration and documentation
+
+- `data/empirical_targets.json`
+- `ASSUMPTIONS.md`
+- `tests/test_empirical_calibration.py`
+- `Makefile`
 
 ## Environment
 
