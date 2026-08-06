@@ -4,10 +4,10 @@
 
 - `paper/peer_review_ecosystem_simulation.tex`
 - `paper/sections/`
-- `paper/figures/symmetric_win_shares.png`
-- `paper/figures/equal_budget_true_value.png`
-- `paper/figures/realistic_vs_ideal_true_value.png`
-- `paper/figures/high_consequence_tradeoff.png`
+- `paper/figures/symmetric_win_shares.svg`
+- `paper/figures/equal_budget_true_value.svg`
+- `paper/figures/realistic_vs_ideal_true_value.svg`
+- `paper/figures/high_consequence_tradeoff.svg`
 
 ## Simulators and scripts
 
