@@ -18,6 +18,10 @@ This run propagated the committed best-fitting reviewer calibration through the 
 | Open | 15.6% | 78.73% | 0.318% | 0.0487 |
 | Peer review | 4.8% | 75.98% | 0.386% | 0.0552 |
 
+![Win share after empirical reviewer calibration](../../paper/figures/calibrated_ecosystem_win_shares.svg)
+
+![Truth recovery after empirical reviewer calibration](../../paper/figures/calibrated_ecosystem_true_value.svg)
+
 Under this calibration-propagated run, peer review did not produce the highest mean truth recovery or calibration and won 4.8% of simulated worlds. Open triage won 49.6%.
 
 ## Interpretive boundary
