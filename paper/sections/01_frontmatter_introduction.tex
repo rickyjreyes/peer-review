@@ -1,0 +1,48 @@
+\maketitle
+
+\begin{abstract}
+Formal prepublication peer review is commonly treated as a necessary quality-control mechanism for scientific publication, yet its system-level benefit relative to alternative institutions is difficult to observe directly. The central counterfactual is hidden: rejected, delayed, abandoned, or institutionally neglected work is largely absent from the record used to evaluate the publication system. This paper develops an agent-based scientific publication ecosystem in which the latent truth and social value of papers are known to the simulator but concealed from all simulated agents. Four institutions are compared: traditional prepublication peer review, immediate open review, open publication with transparent triage and randomized exploration, and a hybrid system combining immediate public release with optional formal review. Papers may be false, partially true, or substantially true; evidence accumulates noisily over time; reviewers vary in skill, disagreement, prestige bias, novelty penalties, and conformity incentives; rejected work may remain accessible, receive reduced attention, improve, and be resubmitted. Under a realistic parameter profile, open triage won 52.2\% of simulated worlds and traditional peer review won 1.2\%. A symmetric extension then allowed every system to detect defects, repair methods and reporting, miss errors, and introduce harmful revisions. In 500 worlds containing 125,000 papers, open triage won 55.0\% and peer review won 0.4\%. In a separate 800-world test containing 176,000 papers, initial review, resubmission, and downstream evaluation were charged against exactly equal lifetime expert-action budgets while assumptions deliberately favored peer review. Open triage won 60.1\% of worlds and peer review won 14.0\%. When false-negative costs were made asymmetric across high-consequence domains, peer review recovered 72.8\% of available true social value, compared with 84.7\% for open triage, while producing the largest equity gap. These simulations do not establish that real peer review is universally harmful. They establish a conditional and reproducible result: when uncertain prepublication decisions reduce later attention, expert criticism can remain beneficial while mandatory gatekeeping reduces long-run truth recovery.
+\end{abstract}
+
+\section{Introduction}
+
+Science is ordinarily distinguished by observation, explicit hypotheses, mathematical or causal reasoning, empirical testing, prediction, replication, criticism, and correction. Formal prepublication peer review is different in kind: it is an institutional procedure that determines whether a manuscript receives publication, certification, and the attention associated with a recognized venue. Peer review may improve individual manuscripts, but that local benefit does not by itself establish that mandatory prepublication gatekeeping improves science as a whole.
+
+The system-level question is difficult because the relevant counterfactual is largely invisible. Published work can be cited, replicated, corrected, or retracted. Rejected or institutionally neglected work may be resubmitted, but it may also lose attention, funding, priority, or the opportunity to accumulate evidence. A publication system can therefore commit two classes of error:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \textbf{false positive:} granting credibility and attention to a false or materially defective claim;
+    \item \textbf{false negative:} withholding attention, legitimacy, or timely dissemination from a valid and potentially valuable claim.
+\end{enumerate}
+
+Most defenses of peer review emphasize false-positive control. The social cost of false negatives is harder to measure because suppressed discoveries are not reliably recorded. The cost distribution may also be highly asymmetric. Accepting an ordinary false paper can waste resources and mislead later work. Failing to recognize a valid cancer treatment, safety intervention, infrastructure solution, or foundational theory can impose costs far beyond one publication decision.
+
+Empirical studies also challenge an idealized picture of peer review. In one controlled experiment, reviewers detected an average of 2.58 of nine deliberately inserted major errors, and training interventions produced only small effects \citep{schroter2008}. A meta-analysis of reviewer agreement found low reliability across studies \citep{bornmann2010}. A preregistered field experiment found large status effects when the identical manuscript was attributed to a Nobel laureate rather than a little-known author \citep{huber2022}. A 2023 Cochrane review concluded that reviewer training may produce little or no improvement in review quality \citep{hesselberg2023}. These findings do not prove that peer review is net harmful, but they motivate treating its presumed benefit as an empirical hypothesis rather than an axiom.
+
+This paper asks:
+
+\begin{quote}
+Under what conditions does mandatory prepublication peer review recover more scientific truth and social value than immediate publication followed by continuing, transparent evaluation?
+\end{quote}
+
+The question is studied using a hidden-truth agent-based simulation. The simulator knows the latent state of each paper, but reviewers and scientific communities do not. They receive only noisy evidence over time. This makes it possible to compare institutional systems against a common underlying population while preserving the epistemic uncertainty present in real science.
+
+\section{Institutional Systems}
+
+Four systems process the same latent population of manuscripts.
+
+\subsection{Traditional prepublication peer review}
+
+Each manuscript is evaluated by two or three selected reviewers. Reviewer scores depend on latent truth only through an imperfect signal and may also depend on clarity, author prestige, novelty, and conformity. Manuscripts above a threshold are formally accepted. Rejected manuscripts remain publicly accessible in the model, but receive only a fraction of the attention received by accepted work. Authors may revise and resubmit.
+
+\subsection{Immediate open publication}
+
+Every manuscript becomes public immediately. No central committee blocks entry. Attention is distributed through prestige, popularity, novelty, clarity, and current confidence. This system maximizes access but can produce severe attention concentration.
+
+\subsection{Open publication with transparent triage}
+
+Every manuscript becomes public immediately. Evaluation attention is distributed partly by transparent merit signals and partly by randomized exploration. The exploration component prevents obscure work from becoming permanently invisible solely because it lacks prestige, early citations, or fashionable topic alignment.
+
+\subsection{Hybrid publication}
+
+Every manuscript is immediately available as a preprint. Formal peer review remains optional and can add a certification label or attention signal, but it cannot prevent public dissemination or continuing evaluation.
