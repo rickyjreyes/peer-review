@@ -1,0 +1,150 @@
+\section{Experimental Profiles}
+
+\subsection{Realistic profile}
+
+The realistic profile samples moderate reviewer skill, substantial noise, nonzero prestige bias, novelty and conformity penalties, publication delay, reviewer labor, reduced attention following rejection, and incomplete resubmission. These ranges are intended as plausible structural values, not fitted estimates.
+
+\subsection{Peer-review-favorable profile}
+
+The stress test deliberately favors peer review:
+
+\begin{itemize}
+    \item reviewer skill is near the model maximum;
+    \item reviewer noise is near the minimum;
+    \item prestige bias, novelty penalties, and conformity incentives are zero;
+    \item rejected work retains 75--100\% of normal attention;
+    \item revision and resubmission are highly effective;
+    \item publication delay and reviewer labor have zero cost;
+    \item false recognition receives a high penalty.
+\end{itemize}
+
+This profile asks whether an almost ideal gatekeeping system can dominate open alternatives.
+
+\subsection{High-consequence and equity-sensitive profile}
+
+Papers are assigned to basic science, cancer, public health, safety, climate, or infrastructure. Valid high-consequence papers receive larger social-value weights, while false high-consequence papers receive larger harm weights. A disadvantaged-author indicator lowers prestige and presentation resources but does not alter latent truth. The equity gap is
+
+\begin{equation}
+\mathcal{E}
+=
+\Pr(\mathrm{recognized}\mid\mathrm{valid,advantaged})
+-
+\Pr(\mathrm{recognized}\mid\mathrm{valid,disadvantaged}).
+\end{equation}
+
+The consequence-sensitive score penalizes missed true social value and unequal recognition:
+
+\begin{equation}
+S_H
+=1.4\mathcal{R}_H
+-\mathcal{F}_H
+-1.3(1-\mathcal{R}_H)
+-0.8\mathcal{E}
+-0.5\mathcal{C}
+-w_DD.
+\end{equation}
+
+\section{Results}
+
+\subsection{Realistic versus idealized conditions}
+
+Table~\ref{tab:profiles} reports simulations of 500 worlds per profile, 250 papers per world, and 25 periods. The realistic and idealized profiles therefore contain 125,000 unique papers each.
+
+\begin{table}[ht]
+\centering
+\caption{Institutional performance under realistic and peer-review-favorable profiles.}
+\label{tab:profiles}
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Profile & System & Win share & True value & False recognition & Calibration MSE\\
+\midrule
+Realistic & Open triage & 52.2\% & 85.0\% & 0.013\% & 0.0331\\
+Realistic & Hybrid & 29.4\% & 84.3\% & 0.037\% & 0.0330\\
+Realistic & Open & 17.2\% & 81.8\% & 0.082\% & 0.0375\\
+Realistic & Peer review & 1.2\% & 72.1\% & 0.460\% & 0.0644\\
+\midrule
+Idealized & Open triage & 41.2\% & 88.8\% & 0.0075\% & 0.0225\\
+Idealized & Peer review & 32.8\% & 88.6\% & 0.018\% & 0.0224\\
+Idealized & Hybrid & 22.8\% & 88.1\% & 0.066\% & 0.0241\\
+Idealized & Open & 3.2\% & 77.1\% & 0.225\% & 0.0467\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Under realistic assumptions, traditional peer review recovered substantially less true value, exhibited worse calibration, and won only 1.2\% of worlds. Under the deliberately favorable profile, peer review became competitive with open triage. It did not clearly dominate, despite receiving unusually favorable assumptions and zero cost for delay and labor.
+
+The interpretation is not that review itself is intrinsically harmful. The result identifies the vulnerable mechanism: uncertain preliminary judgments become costly when they determine later attention. When rejected work retains nearly equal attention and reviewers are accurate and unbiased, the gate has little destructive power. When rejection reduces later evaluation, false negatives persist because evidence cannot accumulate.
+
+\subsection{Peer-review-favorable stress test}
+
+A separate 1,000-world stress test used 300 papers and 30 periods per world, yielding 300,000 unique papers. Peer review won 34.4\% of worlds, open triage won 36.6\%, hybrid won 25.6\%, and unfiltered open publication won 3.4\%. Average scores for peer review and open triage were 0.8303 and 0.8318, respectively. Peer review therefore approached parity only after bias, novelty penalties, labor costs, delay costs, and most post-rejection attention losses were removed.
+
+\subsection{Symmetric correction stress test}
+
+The symmetric extension was run for 500 worlds, 250 papers per world, and 25 periods, totaling 125,000 unique papers. All systems could detect and repair methodological, statistical, reporting, and reproducibility defects, and all could introduce harmful revisions.
+
+\begin{table}[ht]
+\centering
+\caption{Symmetric correction experiment.}
+\label{tab:symmetric}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+System & Win share & True value & False recognition & Calibration MSE\\
+\midrule
+Open triage & 55.0\% & 87.2\% & 0.030\% & 0.0311\\
+Hybrid & 26.8\% & 86.2\% & 0.110\% & 0.0319\\
+Open review & 17.8\% & 84.4\% & 0.080\% & 0.0340\\
+Peer review & 0.4\% & 75.1\% & 0.710\% & 0.0696\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Giving peer review a genuine manuscript-correction mechanism did not reverse the result. The same expert actions were also available after immediate publication, while the peer-review gate continued to reduce subsequent attention to rejected papers. Traditional peer review ended with a mean rejection share of 44.8\%.
+
+\subsection{Equal-total-labor peer-review-favorable test}
+
+The strongest adversarial test used 800 worlds, 220 papers per world, and 24 periods, totaling 176,000 unique papers. Reviewers were strong but not perfect, repair was effective, institutional biases were small, resubmission was easy, rejected papers retained substantial attention, false recognition was penalized heavily, and delay received almost no penalty. Initial review, resubmission review, and continuing evaluation were charged against the same lifetime expert-action budget for every system.
+
+\begin{table}[ht]
+\centering
+\caption{Peer-review-favorable experiment under exact equal lifetime expert labor.}
+\label{tab:equalbudget}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+System & Win share & True value & False recognition & Calibration MSE & Actions\\
+\midrule
+Open triage & 60.1\% & 90.4\% & 0.001\% & 0.0244 & 5018.0\\
+Hybrid & 18.1\% & 88.5\% & 0.070\% & 0.0273 & 5018.0\\
+Peer review & 14.0\% & 88.5\% & 0.160\% & 0.0324 & 5018.0\\
+Open review & 7.8\% & 85.8\% & 0.049\% & 0.0315 & 5018.0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Peer review remained useful and recovered nearly as much true value as the hybrid system, but it did not become the optimal institution. Its mean final rejection share was 46.7\%. The experiment isolates the distinction between expert criticism and gatekeeping: correction remained valuable, while making a noisy preliminary decision control later attention remained costly.
+
+\subsection{High-consequence and equity-sensitive simulation}
+
+Table~\ref{tab:harm} reports 1,000 worlds, 300 papers per world, and 30 periods, totaling 300,000 unique papers.
+
+\begin{table}[ht]
+\centering
+\caption{High-consequence and equity-sensitive results.}
+\label{tab:harm}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+System & Win share & True social value & Missed true harm & False harm & Equity gap\\
+\midrule
+Open triage & 40.5\% & 84.7\% & 15.3\% & 0.0017\% & 2.50\%\\
+Hybrid & 38.8\% & 84.5\% & 15.5\% & 0.018\% & 2.45\%\\
+Open & 19.0\% & 82.3\% & 17.8\% & 0.084\% & 4.17\%\\
+Peer review & 1.7\% & 72.8\% & 27.2\% & 0.424\% & 8.79\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+When false-negative costs were allowed to reflect high-stakes domains, peer review lost 27.2\% of available true social value. Its equity gap was more than three times that of the hybrid and open-triage systems. The model also produced a higher realized false-harm rate under peer review because preliminary certification concentrated attention and confidence around some accepted false claims, while valid rejected claims received less opportunity to accumulate evidence.
