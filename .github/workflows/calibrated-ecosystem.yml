@@ -1,6 +1,15 @@
 name: Calibrated ecosystem rerun
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/run_calibrated_ecosystem.py"
+      - "src/scientific_publication_simulator.py"
+      - "results/empirical_calibration/best_fit_parameters.json"
+      - "Makefile"
+      - ".github/workflows/calibrated-ecosystem.yml"
   pull_request:
     paths:
       - "src/run_calibrated_ecosystem.py"
