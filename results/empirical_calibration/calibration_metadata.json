@@ -1,0 +1,17 @@
+{
+  "config": {
+    "seed": 20260806,
+    "candidates": 4000,
+    "retain": 200,
+    "refinement_rounds": 4,
+    "refinement_candidates": 1500,
+    "manuscripts": 5000,
+    "errors": 9,
+    "output_dir": "results/empirical_calibration",
+    "targets": "data/empirical_targets.json"
+  },
+  "method": "rejection_abc_with_common_random_numbers",
+  "interpretation": "Retained parameter sets reproduce selected reviewer observables within a simulation-based distance. They are not direct empirical estimates of latent coefficients and are not a full Bayesian posterior.",
+  "best_distance": 1.0667342679202876,
+  "retained_distance_max": 1.7562252490402146
+}
