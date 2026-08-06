@@ -2,6 +2,7 @@
 
 ## Paper
 
+- `paper/peer_review_ecosystem_simulation.pdf`
 - `paper/peer_review_ecosystem_simulation.tex`
 - `paper/sections/`
 - `paper/figures/symmetric_win_shares.svg`
