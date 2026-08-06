@@ -19,6 +19,7 @@
 - `src/reproduce_robustness_experiments.py`
 - `src/calibrate_empirical_model.py`
 - `src/run_calibrated_ecosystem.py`
+- `src/run_scale_incentive_experiment.py`
 - `src/plot_results.R`
 - `src/plot_calibrated_results.R`
 - `src/legacy_baseline_simulation.py`
@@ -33,6 +34,7 @@
 - `results/equal_budget/`
 - `results/empirical_calibration/`
 - `results/calibrated_ecosystem/`
+- `results/scale_incentives/`
 
 ## Calibration and documentation
 
