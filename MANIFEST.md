@@ -3,6 +3,7 @@
 ## Paper
 
 - `paper/peer_review_ecosystem_simulation.tex`
+- `paper/sections/`
 
 ## Simulators
 
