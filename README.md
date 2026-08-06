@@ -13,14 +13,14 @@ The simulator creates paper populations with hidden false, partially true, and s
 
 - [`paper/peer_review_ecosystem_simulation.tex`](paper/peer_review_ecosystem_simulation.tex)
 
-The LaTeX source and its figure files are included directly so the manuscript can be compiled and audited alongside the code.
+The LaTeX source and figure workflow are included directly so the manuscript can be audited alongside the code.
 
 ## Source code
 
 - `src/scientific_publication_simulator.py`: canonical dynamic publication-ecosystem model.
 - `src/symmetric_scientific_review_simulator.py`: symmetric model in which every system can detect defects, repair methods and reporting, miss errors, introduce harmful revisions, and consume expert labor.
 - `src/reproduce_robustness_experiments.py`: exact runner for the symmetric-correction and equal-total-labor headline tests.
-- `src/plot_results.R`: base-R script that regenerates the publication figures from the committed CSV summaries.
+- `src/plot_results.R`: base-R script that regenerates PNG and SVG figures from the committed CSV summaries.
 - `src/legacy_baseline_simulation.py`: earlier known-truth baseline retained for provenance.
 
 ## Installation
@@ -68,25 +68,25 @@ The plotting workflow uses base R only and requires no additional R packages:
 Rscript src/plot_results.R
 ```
 
-The generated files are written to `paper/figures/` and are used directly by the LaTeX manuscript.
+The script writes both SVG figures for GitHub viewing and PNG figures used by the LaTeX manuscript to `paper/figures/`.
 
 ## Key result figures
 
 ### Symmetric correction model
 
-![Symmetric correction model win shares](paper/figures/symmetric_win_shares.png)
+![Symmetric correction model win shares](paper/figures/symmetric_win_shares.svg)
 
 ### Equal-total-labor stress test
 
-![Equal-total-labor true value recovery](paper/figures/equal_budget_true_value.png)
+![Equal-total-labor true value recovery](paper/figures/equal_budget_true_value.svg)
 
 ### Realistic versus peer-review-favorable assumptions
 
-![True-value recovery across assumption profiles](paper/figures/realistic_vs_ideal_true_value.png)
+![True-value recovery across assumption profiles](paper/figures/realistic_vs_ideal_true_value.svg)
 
 ### High-consequence tradeoff
 
-![High-consequence truth-harm tradeoff](paper/figures/high_consequence_tradeoff.png)
+![High-consequence truth-harm tradeoff](paper/figures/high_consequence_tradeoff.svg)
 
 ## Included result summaries
 
