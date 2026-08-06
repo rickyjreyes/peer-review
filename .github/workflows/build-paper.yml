@@ -45,5 +45,6 @@ jobs:
             echo "Compiled PDF is already current."
           else
             git commit -m "Build current paper PDF"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
