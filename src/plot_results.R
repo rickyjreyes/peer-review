@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# Recreate the publication figures from the committed CSV summaries.
+# Recreate publication figures from committed CSV summaries.
 # Uses base R only; no third-party packages are required.
 
 args <- commandArgs(trailingOnly = FALSE)
@@ -40,11 +40,10 @@ render_plot <- function(stem, width, height, draw) {
   dev.off()
 }
 
-bar_drawer <- function(df, value_col, title, ylab, ylim) {
-  force(df); force(value_col); force(title); force(ylab); force(ylim)
-  function() {
-    values <- df[[value_col]]
-    names(values) <- pretty_system(df$system)
+save_bar <- function(df, value_col, title, ylab, stem, ylim) {
+  values <- df[[value_col]]
+  names(values) <- pretty_system(df$system)
+  draw <- function() {
     old <- par(mar = c(8, 6, 4, 2) + 0.1)
     positions <- barplot(
       values,
@@ -58,36 +57,33 @@ bar_drawer <- function(df, value_col, title, ylab, ylim) {
     grid(nx = NA, ny = NULL)
     par(old)
   }
+  render_plot(stem, 9, 5.8, draw)
 }
 
 # 1. Symmetric correction model: win shares.
 symmetric_wins <- read_csv(file.path(repo_root, 'results', 'symmetric', 'win_rates.csv'))
 order_wins <- match(c('open_triage', 'hybrid', 'open_review', 'peer_review'), symmetric_wins$system)
 symmetric_wins <- symmetric_wins[order_wins, ]
-render_plot(
-  'symmetric_win_shares', 9, 5.6,
-  bar_drawer(
-    symmetric_wins,
-    'win_share',
-    'Symmetric correction model: win share',
-    'Share of simulated worlds won',
-    c(0, 0.64)
-  )
+save_bar(
+  symmetric_wins,
+  'win_share',
+  'Symmetric correction model: win share',
+  'Share of simulated worlds won',
+  'symmetric_win_shares',
+  c(0, 0.64)
 )
 
 # 2. Equal-total-labor test: true value recovered.
 equal_budget <- read_csv(file.path(repo_root, 'results', 'equal_budget', 'summary.csv'))
 order_equal <- match(c('open_triage', 'peer_review', 'hybrid', 'open_review'), equal_budget$system)
 equal_budget <- equal_budget[order_equal, ]
-render_plot(
-  'equal_budget_true_value', 9, 5.6,
-  bar_drawer(
-    equal_budget,
-    'true_value_recovered',
-    'Equal-total-labor stress test',
-    'True scientific value recovered',
-    c(0, 1.0)
-  )
+save_bar(
+  equal_budget,
+  'true_value_recovered',
+  'Equal-total-labor stress test',
+  'True scientific value recovered',
+  'equal_budget_true_value',
+  c(0, 1.0)
 )
 
 # 3. Realistic versus peer-review-favorable profiles.
@@ -106,7 +102,7 @@ for (row in seq_len(nrow(profiles))) {
     match(profiles$system[row], systems)
   ] <- profiles$true_value_recovered[row]
 }
-profile_draw <- function() {
+draw_profiles <- function() {
   old <- par(mar = c(8, 6, 4, 2) + 0.1)
   positions <- barplot(
     matrix_values,
@@ -117,18 +113,17 @@ profile_draw <- function() {
     ylab = 'True scientific value recovered',
     border = NA
   )
-  text(positions, matrix_values,
-       labels = sprintf('%.1f%%', 100 * matrix_values), pos = 3, cex = 0.72)
+  text(positions, matrix_values, labels = sprintf('%.1f%%', 100 * matrix_values), pos = 3, cex = 0.72)
   legend('topleft', legend = rownames(matrix_values),
          fill = gray.colors(2, start = 0.35, end = 0.75), bty = 'n')
   grid(nx = NA, ny = NULL)
   par(old)
 }
-render_plot('realistic_vs_ideal_true_value', 10, 5.6, profile_draw)
+render_plot('realistic_vs_ideal_true_value', 10, 5.8, draw_profiles)
 
 # 4. High-consequence truth-harm tradeoff.
 high_consequence <- read_csv(file.path(repo_root, 'results', 'high_consequence', 'summary.csv'))
-tradeoff_draw <- function() {
+draw_harm <- function() {
   old <- par(mar = c(6, 6, 4, 2) + 0.1)
   plot(
     high_consequence$false_social_harm_realized,
@@ -154,6 +149,41 @@ tradeoff_draw <- function() {
   grid()
   par(old)
 }
-render_plot('high_consequence_tradeoff', 8.5, 6, tradeoff_draw)
+render_plot('high_consequence_tradeoff', 9, 6.2, draw_harm)
 
-cat('PNG and SVG figures written to', fig_dir, '\n')
+# 5. Empirical reviewer calibration: target versus best-fitting simulation.
+calibration <- read_csv(file.path(repo_root, 'results', 'empirical_calibration', 'calibration_summary.csv'))
+calibration <- calibration[calibration$fit_role %in% c('primary', 'secondary'), ]
+short_labels <- c(
+  major_error_detection_rate = 'Error detection',
+  interreviewer_reliability = 'Reliability',
+  interreviewer_kappa = 'Kappa',
+  positive_result_recommendation_rate = 'Positive recommendation',
+  null_result_recommendation_rate = 'Null recommendation',
+  major_error_detection_among_rejectors = 'Detection among rejectors'
+)
+calibration$label <- unname(short_labels[calibration$observable])
+calibration_matrix <- rbind(Target = calibration$target, `Best fit` = calibration$best_fit)
+colnames(calibration_matrix) <- calibration$label
+
+draw_calibration <- function() {
+  old <- par(mar = c(10, 6, 4, 2) + 0.1)
+  positions <- barplot(
+    calibration_matrix,
+    beside = TRUE,
+    las = 2,
+    ylim = c(0, 1.05),
+    main = 'Empirical reviewer calibration',
+    ylab = 'Observed or simulated proportion / reliability',
+    border = NA
+  )
+  text(positions, calibration_matrix,
+       labels = sprintf('%.3f', calibration_matrix), pos = 3, cex = 0.68)
+  legend('topright', legend = rownames(calibration_matrix),
+         fill = gray.colors(2, start = 0.35, end = 0.75), bty = 'n')
+  grid(nx = NA, ny = NULL)
+  par(old)
+}
+render_plot('empirical_calibration_fit', 10, 6.2, draw_calibration)
+
+cat('Figures written to', fig_dir, '\n')
