@@ -2,14 +2,15 @@
 
 ## Paper
 
-- `paper/peer_review_ecosystem_simulation.pdf`
-- `paper/peer_review_ecosystem_simulation.tex`
-- `paper/sections/`
+- `paper/peer_review_ecosystem_simulation_full.pdf`
+- `paper/peer_review_ecosystem_simulation_full.tex`
+- `paper/figures/calibrated_ecosystem_win_shares.svg`
+- `paper/figures/calibrated_ecosystem_true_value.svg`
+- `paper/figures/empirical_calibration_fit.svg`
 - `paper/figures/symmetric_win_shares.svg`
 - `paper/figures/equal_budget_true_value.svg`
 - `paper/figures/realistic_vs_ideal_true_value.svg`
 - `paper/figures/high_consequence_tradeoff.svg`
-- `paper/figures/empirical_calibration_fit.svg`
 
 ## Simulators and scripts
 
@@ -17,7 +18,9 @@
 - `src/symmetric_scientific_review_simulator.py`
 - `src/reproduce_robustness_experiments.py`
 - `src/calibrate_empirical_model.py`
+- `src/run_calibrated_ecosystem.py`
 - `src/plot_results.R`
+- `src/plot_calibrated_results.R`
 - `src/legacy_baseline_simulation.py`
 
 ## Results
@@ -29,6 +32,7 @@
 - `results/symmetric/`
 - `results/equal_budget/`
 - `results/empirical_calibration/`
+- `results/calibrated_ecosystem/`
 
 ## Calibration and documentation
 
