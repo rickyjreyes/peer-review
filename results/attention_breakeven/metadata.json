@@ -1,0 +1,10 @@
+{
+  "seed": 20260806,
+  "worlds": 300,
+  "papers_per_world": 250,
+  "periods": 25,
+  "attention_step": 0.05,
+  "breakeven_attention_retention": null,
+  "breakeven_attention_loss": null,
+  "interpretation": "Breakeven is based on mean true-value recovery with reviewer behavior fixed to the committed empirical calibration; other ecosystem parameters remain structural draws."
+}
