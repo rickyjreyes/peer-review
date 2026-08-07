@@ -1,0 +1,16 @@
+{
+  "seed": 20260807,
+  "worlds": 300,
+  "papers_per_world": 250,
+  "periods": 25,
+  "fields": 6,
+  "prediction_file": "PREDICTION_MULTIFIELD_STRESS.md",
+  "regimes": {
+    "independent": {"field_heterogeneity": false, "shock_scale": 0.0, "within_spillover": 0.0, "cross_spillover": 0.0},
+    "multifield_moderate": {"field_heterogeneity": true, "shock_scale": 0.25, "within_spillover": 0.035, "cross_spillover": 0.01},
+    "multifield_strong": {"field_heterogeneity": true, "shock_scale": 0.5, "within_spillover": 0.08, "cross_spillover": 0.025}
+  },
+  "reviewer_calibration": "results/empirical_calibration/best_fit_parameters.json",
+  "execution_note": "Deterministic 300-world run of the committed runner logic; CI workflow is included for independent rerun.",
+  "interpretive_boundary": "Structural robustness test with explicit heterogeneous fields and correlated path-dependent learning, not an empirical reconstruction of named disciplines."
+}
