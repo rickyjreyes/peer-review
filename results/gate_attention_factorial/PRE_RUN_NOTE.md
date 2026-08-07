@@ -1,0 +1,1 @@
+The preregistered prediction is commit `a7cdf8b277886e87674de18844d28ee211467891`, which predates the factorial runner and its execution. This note is included so the result directory preserves that provenance explicitly.
