@@ -1,0 +1,1 @@
+Execution plan: 300 factorial worlds, 150 exploration-sweep worlds, 250 papers per world, 25 periods, exploration share swept from 0 to 1 by 0.10. Primary endpoint: true scientific value recovered. Prediction already frozen in commit a7cdf8b277886e87674de18844d28ee211467891.
