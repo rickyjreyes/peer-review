@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - "src/run_calibrated_ecosystem.py"
+      - "src/run_attention_breakeven.py"
       - "src/scientific_publication_simulator.py"
       - "results/empirical_calibration/best_fit_parameters.json"
       - "Makefile"
@@ -14,6 +15,7 @@ on:
   pull_request:
     paths:
       - "src/run_calibrated_ecosystem.py"
+      - "src/run_attention_breakeven.py"
       - "src/scientific_publication_simulator.py"
       - "results/empirical_calibration/best_fit_parameters.json"
       - "Makefile"
@@ -49,20 +51,31 @@ jobs:
             --periods 25 \
             --output-dir calibrated_ecosystem_output
 
+      - name: Run rejected-attention breakeven sweep
+        run: |
+          python src/run_attention_breakeven.py \
+            --worlds 300 \
+            --papers 250 \
+            --periods 25 \
+            --step 0.05 \
+            --output-dir attention_breakeven_output
+
       - name: Display results
         run: |
           echo "Win rates"
           cat calibrated_ecosystem_output/win_rates.csv
           echo
-          echo "Summary"
-          cat calibrated_ecosystem_output/summary.csv
+          echo "Breakeven summary"
+          cat attention_breakeven_output/summary.csv
           echo
-          echo "Metadata"
-          cat calibrated_ecosystem_output/metadata.json
+          echo "Breakeven metadata"
+          cat attention_breakeven_output/metadata.json
 
       - name: Upload calibrated results
         uses: actions/upload-artifact@v4
         with:
           name: calibrated-ecosystem-results
-          path: calibrated_ecosystem_output/
+          path: |
+            calibrated_ecosystem_output/
+            attention_breakeven_output/
           if-no-files-found: error
