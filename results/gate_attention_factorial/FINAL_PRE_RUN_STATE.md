@@ -1,0 +1,1 @@
+This commit is the final pre-run state. Prediction: gate main effect <2 percentage points and possibly indistinguishable from zero; exploration allocation carries most of the effect; gate + exploration should be close to no-gate + exploration.
