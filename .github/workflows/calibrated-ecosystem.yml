@@ -8,6 +8,8 @@ on:
     paths:
       - "src/run_calibrated_ecosystem.py"
       - "src/run_attention_breakeven.py"
+      - "src/run_gate_attention_factorial.py"
+      - "PREDICTION_ATTENTION_FACTORIAL.md"
       - "src/scientific_publication_simulator.py"
       - "results/empirical_calibration/best_fit_parameters.json"
       - "Makefile"
@@ -16,6 +18,8 @@ on:
     paths:
       - "src/run_calibrated_ecosystem.py"
       - "src/run_attention_breakeven.py"
+      - "src/run_gate_attention_factorial.py"
+      - "PREDICTION_ATTENTION_FACTORIAL.md"
       - "src/scientific_publication_simulator.py"
       - "results/empirical_calibration/best_fit_parameters.json"
       - "Makefile"
@@ -60,6 +64,16 @@ jobs:
             --step 0.05 \
             --output-dir attention_breakeven_output
 
+      - name: Run preregistered gate-attention factorial
+        run: |
+          python src/run_gate_attention_factorial.py \
+            --worlds 300 \
+            --sweep-worlds 150 \
+            --papers 250 \
+            --periods 25 \
+            --exploration-step 0.10 \
+            --output-dir gate_attention_factorial_output
+
       - name: Display results
         run: |
           echo "Win rates"
@@ -68,8 +82,14 @@ jobs:
           echo "Breakeven summary"
           cat attention_breakeven_output/summary.csv
           echo
-          echo "Breakeven metadata"
-          cat attention_breakeven_output/metadata.json
+          echo "Factorial effects"
+          cat gate_attention_factorial_output/factorial_effects.csv
+          echo
+          echo "Exploration sweep"
+          cat gate_attention_factorial_output/exploration_sweep.csv
+          echo
+          echo "Factorial metadata"
+          cat gate_attention_factorial_output/metadata.json
 
       - name: Upload calibrated results
         uses: actions/upload-artifact@v4
@@ -78,4 +98,5 @@ jobs:
           path: |
             calibrated_ecosystem_output/
             attention_breakeven_output/
+            gate_attention_factorial_output/
           if-no-files-found: error
