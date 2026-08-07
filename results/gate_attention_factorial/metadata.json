@@ -1,0 +1,12 @@
+{
+  "seed": 20260807,
+  "factorial_worlds": 300,
+  "sweep_worlds": 150,
+  "papers_per_world": 250,
+  "periods": 25,
+  "exploration_step": 0.1,
+  "prediction_file": "PREDICTION_ATTENTION_FACTORIAL.md",
+  "gate_definition": "Same calibrated formal review and revision in every arm; gate arms down-weight unaccepted work by rejected_attention_fraction and incur publication delay, while no-gate arms keep review non-vetoing.",
+  "attention_factor": "Peer-style concentrated allocation versus the repository's triage allocation rule. The secondary sweep isolates the randomized-exploration share within triage.",
+  "interpretive_boundary": "Mechanism-isolation experiment in the current calibrated architecture, not an empirical estimate of real-world gate or triage effects."
+}
