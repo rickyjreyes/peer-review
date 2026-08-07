@@ -6,9 +6,11 @@ on:
       - "src/run_calibrated_ecosystem.py"
       - "src/run_attention_breakeven.py"
       - "src/run_gate_attention_factorial.py"
+      - "src/run_multifield_stress.py"
       - "src/scientific_publication_simulator.py"
       - "results/empirical_calibration/best_fit_parameters.json"
       - "PREDICTION_ATTENTION_FACTORIAL.md"
+      - "PREDICTION_MULTIFIELD_STRESS.md"
       - ".github/workflows/calibrated-ecosystem.yml"
   workflow_dispatch:
 
@@ -16,7 +18,7 @@ permissions:
   contents: read
 
 jobs:
-  simulate:
+  factorial:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -53,4 +55,47 @@ jobs:
         with:
           name: gate-attention-factorial-results
           path: gate_attention_factorial_output/
+          if-no-files-found: error
+
+  multifield:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Compile multifield runner
+        run: python -m py_compile src/run_multifield_stress.py
+      - name: Run preregistered multifield stress test
+        run: |
+          python src/run_multifield_stress.py \
+            --worlds 300 \
+            --papers 250 \
+            --periods 25 \
+            --fields 6 \
+            --output-dir multifield_stress_output
+      - name: Display multifield results
+        run: |
+          echo "Arm means"
+          cat multifield_stress_output/arm_means.csv
+          echo
+          echo "Peer review minus open-triage gaps"
+          cat multifield_stress_output/peer_triage_gaps.csv
+          echo
+          echo "Gap changes"
+          cat multifield_stress_output/gap_changes.csv
+          echo
+          echo "Win shares"
+          cat multifield_stress_output/win_shares.csv
+          echo
+          echo "Metadata"
+          cat multifield_stress_output/metadata.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: multifield-stress-results
+          path: multifield_stress_output/
           if-no-files-found: error
