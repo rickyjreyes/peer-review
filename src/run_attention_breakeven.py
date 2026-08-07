@@ -6,6 +6,8 @@ world, structural ecosystem parameters are sampled once, then the same world is 
 under open triage and under peer review across a grid of rejected-paper attention
 fractions. Separate deterministic RNG streams are used for each system so the open-
 triage baseline is invariant to the attention-retention setting.
+
+This file is also the reproducible entry point used by the GitHub Actions breakeven run.
 """
 
 from __future__ import annotations
@@ -59,7 +61,7 @@ def main() -> None:
         triage_seed = args.seed + 2000003 * world + 17
         triage = run_system('open_triage', triage_seed, base, args.papers, args.periods)
 
-        for j, rho in enumerate(rho_grid):
+        for rho in rho_grid:
             p = copy.deepcopy(base)
             p['rejected_attention_fraction'] = float(rho)
             peer_seed = args.seed + 3000017 * world + 31
@@ -92,13 +94,13 @@ def main() -> None:
     summary['ci_low'] = summary['delta_peer_minus_triage'] - 1.96 * summary['delta_se']
     summary['ci_high'] = summary['delta_peer_minus_triage'] + 1.96 * summary['delta_se']
 
-    # Linear interpolation between adjacent grid points if the mean delta crosses zero.
     crossing = None
     d = summary['delta_peer_minus_triage'].to_numpy()
     r = summary['rejected_attention_fraction'].to_numpy()
     for i in range(len(d) - 1):
         if d[i] == 0:
-            crossing = float(r[i]); break
+            crossing = float(r[i])
+            break
         if d[i] * d[i + 1] < 0:
             crossing = float(r[i] + (0 - d[i]) * (r[i + 1] - r[i]) / (d[i + 1] - d[i]))
             break
